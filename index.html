@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Local & Metadados -->
+  <title>Divina Bolha | Lavanderia Self-Service em Frederico Westphalen - RS</title>
+  <meta name="description" content="Lavanderia self-service no Centro de Frederico Westphalen, ao lado da Prefeitura. Aberta todos os dias das 7h às 23h, com Omo e Comfort inclusos e máquina para cobertores.">
+  <meta name="keywords" content="lavanderia em Frederico Westphalen, lavanderia self-service, lavar cobertor, lavar roupa centro FW, Divina Bolha">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://divinabolha.com.br">
+
+  <!-- Open Graph / Redes Sociais e WhatsApp -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:title" content="Divina Bolha | Lavanderia Self-Service em Frederico Westphalen - RS">
+  <meta property="og:description" content="Lave e seque suas roupas sem sair do Centro. Sabão Omo e amaciante Comfort inclusos. Aberta todos os dias das 7h às 23h ao lado da Prefeitura.">
+  <meta property="og:url" content="https://divinabolha.com.br">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Divina Bolha Lavanderia Self-Service">
+
+  <!-- Favicon com SVG de bolha -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230B4DB8'/><circle cx='40' cy='38' r='32' fill='%234FB3F6'/><circle cx='34' cy='28' r='10' fill='white' opacity='0.7'/></svg>">
+
+  <!-- Google Fonts: Bebas Neue (títulos condensados fortes) + Poppins (arredondada, amigável e legível) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS para Mapa Interativo Limpo e Moderno -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              royal: '#0B4DB8',        /* Azul Royal forte */
+              royalDark: '#08398D',
+              sky: '#4FB3F6',          /* Azul claro/céu */
+              skyLight: '#EBF6FE',
+              skySoft: '#F3F9FE',
+              green: '#3CB54A',        /* Verde vibrante de ação */
+              greenHover: '#339E3F',
+              yellow: '#FFD21F',       /* Amarelo de destaque */
+              yellowDark: '#E5BA0C',
+              darkText: '#1E293B',
+              muted: '#64748B'
+            }
+          },
+          fontFamily: {
+            title: ['"Bebas Neue"', 'sans-serif'],
+            body: ['"Poppins"', 'sans-serif']
+          },
+          boxShadow: {
+            'bubble': '0 10px 30px -5px rgba(11, 77, 184, 0.25)',
+            'bubble-lg': '0 20px 40px -10px rgba(11, 77, 184, 0.35)',
+            'glow-green': '0 0 25px rgba(60, 181, 74, 0.45)',
+            'glow-yellow': '0 0 20px rgba(255, 210, 31, 0.5)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Dados Estruturados Schema.org (JSON-LD LocalBusiness / Laundromat) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Laundromat",
+    "name": "Divina Bolha Lavanderia Self-Service",
+    "image": "https://divinabolha.com.br/logo.png",
+    "@id": "https://divinabolha.com.br",
+    "url": "https://divinabolha.com.br",
+    "telephone": "+5555981301400",
+    "priceRange": "R$ 15,90 - R$ 29,90",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Coronel Aparício Borges, 487, sala 02, Centro",
+      "addressLocality": "Frederico Westphalen",
+      "addressRegion": "RS",
+      "postalCode": "98400-000",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -27.3592,
+      "longitude": -53.3944
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        ],
+        "opens": "07:00",
+        "closes": "23:00"
+      }
+    ],
+    "sameAs": [
+      "https://instagram.com/divinabolha"
+    ]
+  }
+  </script>
+
+  <style>
+    /* Tipografia de base */
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #1E293B;
+      background-color: #FFFFFF;
+      overflow-x: hidden;
+    }
+    
+    .font-title {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    /* Bolhas de sabão translúcidas com efeito de luz */
+    .soap-bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.4) 22%, rgba(79, 179, 246, 0.25) 55%, rgba(11, 77, 184, 0.15) 85%, rgba(255, 255, 255, 0.6) 100%);
+      box-shadow: inset -3px -3px 8px rgba(11, 77, 184, 0.2), inset 2px 2px 6px rgba(255, 255, 255, 0.9), 0 4px 14px rgba(79, 179, 246, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      pointer-events: none;
+      animation: floatUpward linear infinite;
+      will-change: transform, opacity;
+    }
+
+    /* Brilho reflexivo interno na bolha */
+    .soap-bubble::after {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 18%;
+      width: 25%;
+      height: 18%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      transform: rotate(-30deg);
+    }
+
+    @keyframes floatUpward {
+      0% {
+        transform: translateY(110%) translateX(0) scale(0.9);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.85;
+      }
+      50% {
+        transform: translateY(50%) translateX(15px) scale(1.05);
+        opacity: 0.9;
+      }
+      85% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-20%) translateX(-15px) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Efeito de pulso suave no botão de WhatsApp */
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(60, 181, 74, 0.5);
+      }
+      50% {
+        transform: scale(1.06);
+        box-shadow: 0 12px 35px rgba(60, 181, 74, 0.75);
+      }
+    }
+
+    .pulse-btn {
+      animation: pulseGlow 2.5s infinite ease-in-out;
+    }
+
+    /* Animação suave para acordes do FAQ */
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease-in-out;
+      opacity: 0;
+    }
+    .faq-item.active .faq-content {
+      max-height: 250px;
+      opacity: 1;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Efeito de onda suave no cabeçalho */
+    .hero-wave {
+      background: linear-gradient(180deg, #0B4DB8 0%, #08398D 100%);
+      position: relative;
+    }
+
+    /* Suporte a acessibilidade de movimento reduzido */
+    @media (prefers-reduced-motion: reduce) {
+      .soap-bubble, .pulse-btn {
+        animation: none !important;
+      }
+    }
+
+    /* Estilos do Mapa Interativo com Leaflet */
+    .leaflet-container {
+      font-family: 'Poppins', sans-serif !important;
+      background: #08398D !important;
+    }
+    .leaflet-control-attribution {
+      display: none !important;
+    }
+    .leaflet-bar {
+      border: none !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    }
+    .leaflet-bar a {
+      background-color: rgba(15, 23, 42, 0.85) !important;
+      color: #FFFFFF !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      backdrop-filter: blur(8px);
+    }
+    .leaflet-bar a:hover {
+      background-color: #0B4DB8 !important;
+      color: #FFD21F !important;
+    }
+    .divina-map-pin {
+      background: transparent !important;
+      border: none !important;
+    }
+    .leaflet-popup-content-wrapper {
+      background: rgba(15, 23, 42, 0.95) !important;
+      color: #FFFFFF !important;
+      border-radius: 16px !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+      backdrop-filter: blur(10px);
+    }
+    .leaflet-popup-tip {
+      background: rgba(15, 23, 42, 0.95) !important;
+    }
+
+    /* Moldura Esférica de Bolha de Sabão para o Mapa Interativo */
+    .soap-bubble-map-wrapper {
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 
+        0 20px 50px -10px rgba(0, 0, 0, 0.65),
+        0 0 35px rgba(79, 179, 246, 0.55),
+        inset 0 0 45px rgba(11, 77, 184, 0.45);
+      animation: subtleBubbleFloat 5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    /* Brilho Especular Reflexivo Curvado da Bolha de Sabão */
+    .soap-bubble-map-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 6%;
+      left: 10%;
+      width: 32%;
+      height: 20%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+      transform: rotate(-35deg);
+      pointer-events: none;
+      z-index: 500;
+    }
+
+    /* Brilho Secundário na Borda Inferior da Bolha */
+    .soap-bubble-map-wrapper::before {
+      content: '';
+      position: absolute;
+      bottom: 8%;
+      right: 12%;
+      width: 25%;
+      height: 15%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(79, 179, 246, 0.45) 0%, transparent 100%);
+      transform: rotate(-25deg);
+      pointer-events: none;
+      z-index: 500;
+    }
+
+    @keyframes subtleBubbleFloat {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-8px) scale(1.015);
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased selection:bg-brand-yellow selection:text-slate-900">
+
+  <!-- ========================================================================= -->
+  <!-- BARRA DE STATUS SUPERIOR (Aberto/Fechado em tempo real + aviso Instagram) -->
+  <!-- ========================================================================= -->
+  <div class="bg-brand-royalDark text-white text-xs sm:text-sm py-2 px-4 border-b border-blue-400/20 sticky top-0 z-50 backdrop-blur-md bg-opacity-95">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <!-- Indicador dinâmico de status -->
+      <div class="flex items-center gap-2">
+        <span id="status-indicator-dot" class="inline-block w-2.5 h-2.5 rounded-full bg-brand-green animate-ping"></span>
+        <span id="business-status-badge" class="font-semibold text-brand-green tracking-wide">Calculando horário...</span>
+        <span class="text-blue-200 hidden sm:inline">•</span>
+        <span class="text-blue-200 hidden sm:inline">Todos os dias das 7h às 23h</span>
+      </div>
+
+      <!-- Localização rápida e Instagram -->
+      <div class="flex items-center gap-4 text-xs">
+        <span class="hidden md:flex items-center gap-1 text-blue-100">
+          <svg class="w-3.5 h-3.5 text-brand-yellow" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+          </svg>
+          Ao lado da Prefeitura de Frederico Westphalen
+        </span>
+        <a href="https://instagram.com/divinabolha" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-brand-yellow transition-colors font-medium text-white bg-white/10 px-2.5 py-1 rounded-full">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span>@divinabolha</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- CABEÇALHO / MENU DE NAVEGAÇÃO -->
+  <!-- ========================================================================= -->
+  <header class="bg-brand-royal text-white sticky top-[37px] z-40 shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      
+      <!-- LOGO -->
+      <a href="#" class="flex items-center gap-3 group focus:outline-none">
+        <!-- Espaço para logo.png com fallback em SVG de alta qualidade -->
+        <div class="relative w-12 h-12 rounded-full bg-white/10 p-1 flex items-center justify-center border-2 border-brand-sky shadow-inner overflow-hidden">
+          <img src="logo.png" 
+               alt="Divina Bolha Lavanderia Self-Service" 
+               class="w-full h-full object-contain"
+               onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-center leading-none text-white font-title text-xl font-bold flex flex-col items-center\'><svg class=\'w-6 h-6 text-brand-yellow\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\'><circle cx=\'12\' cy=\'12\' r=\'8\'/><circle cx=\'9\' cy=\'9\' r=\'2\' fill=\'white\'/><path d=\'M17 7a2 2 0 100-4 2 2 0 000 4z\'/></svg><span class=\'block text-[8px] tracking-widest text-brand-yellow font-sans font-bold uppercase\'>BOLHA</span></div>';">
+        </div>
+        <div class="leading-tight">
+          <span class="block font-title text-2xl sm:text-3xl tracking-wider text-white group-hover:text-brand-yellow transition-colors">DIVINA BOLHA</span>
+          <span class="block text-[10px] sm:text-xs text-brand-sky font-semibold uppercase tracking-widest">Lavanderia Self-Service</span>
+        </div>
+      </a>
+
+      <!-- MENU DESKTOP -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+        <a href="#como-funciona" class="hover:text-brand-yellow transition-colors">Como Funciona</a>
+        <a href="#diferenciais" class="hover:text-brand-yellow transition-colors">Diferenciais</a>
+        <a href="#precos" class="hover:text-brand-yellow transition-colors">Preços</a>
+        <a href="#fotos" class="hover:text-brand-yellow transition-colors">Fotos</a>
+        <a href="#duvidas" class="hover:text-brand-yellow transition-colors">Dúvidas</a>
+        <a href="#localizacao" class="hover:text-brand-yellow transition-colors">Localização</a>
+      </nav>
+
+      <!-- BOTÃO WHATSAPP NO TOPO + MENU MOBILE -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/5555981301400?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="hidden sm:inline-flex items-center gap-2 bg-brand-green hover:bg-brand-greenHover text-white px-4 py-2 rounded-full font-bold text-xs sm:text-sm shadow-md transition-all transform hover:-translate-y-0.5">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- Botão Hambúrguer Mobile -->
+        <button id="mobile-menu-btn" 
+                aria-label="Abrir Menu de Navegação" 
+                class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- MENU MOBILE EXPANSÍVEL -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-brand-royalDark border-t border-white/10 px-4 pt-3 pb-5 space-y-3 text-base">
+      <a href="#como-funciona" class="mobile-nav-link block py-2 border-b border-white/5 hover:text-brand-yellow font-medium">Como Funciona</a>
+      <a href="#diferenciais" class="mobile-nav-link block py-2 border-b border-white/5 hover:text-brand-yellow font-medium">Diferenciais</a>
+      <a href="#precos" class="mobile-nav-link block py-2 border-b border-white/5 hover:text-brand-yellow font-medium">Preços</a>
+      <a href="#fotos" class="mobile-nav-link block py-2 border-b border-white/5 hover:text-brand-yellow font-medium">Fotos do Espaço</a>
+      <a href="#duvidas" class="mobile-nav-link block py-2 border-b border-white/5 hover:text-brand-yellow font-medium">Dúvidas Frequentes</a>
+      <a href="#localizacao" class="mobile-nav-link block py-2 border-b border-white/5 hover:text-brand-yellow font-medium">Localização & Horário</a>
+      <div class="pt-2 flex flex-col gap-2">
+        <a href="https://wa.me/5555981301400?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="w-full text-center bg-brand-green hover:bg-brand-greenHover text-white py-3 rounded-xl font-bold shadow-lg flex items-center justify-center gap-2">
+          <span>Chamar no WhatsApp</span>
+        </a>
+        <a href="https://instagram.com/divinabolha" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="w-full text-center bg-white/10 hover:bg-white/20 text-white py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 text-sm">
+          <span>Siga no Instagram @divinabolha</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 1. SEÇÃO TOPO (HERO) COM VÍDEO DE FUNDO SUTIL (HIGGSFIELD) & BOLHAS -->
+  <!-- ========================================================================= -->
+  <section class="relative bg-gradient-to-b from-brand-royal via-brand-royal to-[#07327D] text-white pt-12 pb-20 sm:py-24 overflow-hidden">
+    
+    <!-- Background de Vídeo em Loop Dinâmico e Nítido -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+      <video id="hero-background-video" autoplay loop muted playsinline class="w-full h-full object-cover opacity-75 sm:opacity-80 scale-100 filter brightness-105 contrast-105">
+        <source src="video/video_hero.mp4" type="video/mp4">
+      </video>
+      <!-- Gradiente refinado para nitidez máxima do vídeo mantendo a leitura impecável -->
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-royalDark/80 via-brand-royal/50 to-brand-royalDark/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-royalDark/30 via-transparent to-[#051c44]/80"></div>
+    </div>
+
+    <!-- Bolhas Dinâmicas Flutuantes em Camadas (efeito translúcido sutil) -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-[1]" aria-hidden="true">
+      <div class="soap-bubble" style="width: 45px; height: 45px; left: 8%; animation-duration: 9s; animation-delay: 0s;"></div>
+      <div class="soap-bubble" style="width: 85px; height: 85px; left: 22%; animation-duration: 13s; animation-delay: 2s;"></div>
+      <div class="soap-bubble" style="width: 35px; height: 35px; left: 45%; animation-duration: 7s; animation-delay: 4s;"></div>
+      <div class="soap-bubble" style="width: 100px; height: 100px; left: 70%; animation-duration: 15s; animation-delay: 1s;"></div>
+      <div class="soap-bubble" style="width: 50px; height: 50px; left: 88%; animation-duration: 10s; animation-delay: 3s;"></div>
+      <div class="soap-bubble" style="width: 65px; height: 65px; left: 35%; animation-duration: 12s; animation-delay: 5s;"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      
+      <!-- Split Hero Grid (2 Colunas no Desktop, Empilhado no Mobile) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- COLUNA DA ESQUERDA: CHAMADA PRINCIPAL, TEXTOS E AÇÕES (7 Colunas) -->
+        <div class="lg:col-span-7 text-center lg:text-left">
+          
+          <!-- Badge de Localização Única -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-5">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-brand-yellow font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+              <span>Lavanderia Self-Service em Frederico Westphalen</span>
+            </div>
+          </div>
+
+          <!-- Título Principal de Alto Impacto -->
+          <h1 class="font-title text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-white drop-shadow-sm mb-4">
+            ROUPA LIMPA E SECA <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-yellow-200 to-brand-yellow">
+              EM MENOS DE 1 HORA
+            </span>
+          </h1>
+
+          <!-- Subtítulo com Destaques Relevantes -->
+          <p class="text-base sm:text-lg text-blue-100 font-normal mb-5 leading-relaxed max-w-xl mx-auto lg:mx-0">
+            Sua lavanderia self-service no <strong class="text-white font-semibold">Centro de Frederico Westphalen</strong>, ao lado da Prefeitura. Máquinas de alta capacidade, sabão Omo e amaciante Comfort já inclusos e dosados automaticamente. <span class="text-brand-yellow font-bold">É só chegar!</span>
+          </p>
+
+          <!-- Endereço Físico Exato e Horário -->
+          <div class="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 bg-slate-900/60 backdrop-blur-md border border-white/15 px-4 py-2 rounded-2xl mb-6 text-xs sm:text-sm text-white">
+            <span class="text-brand-yellow text-base">📍</span>
+            <span class="font-semibold">Rua Coronel Aparício Borges, 487 (sala 02)</span>
+            <span class="text-blue-300 hidden sm:inline">•</span>
+            <span class="text-brand-green font-medium">Aberta todos os dias das 7h às 23h</span>
+          </div>
+
+          <!-- Botões de Ação na Coluna Esquerda -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-8">
+            <!-- Botão Principal: Traçar Rota no Google Maps -->
+            <a href="https://maps.google.com/?q=Rua+Coronel+Aparicio+Borges+487+Frederico+Westphalen+RS" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-green hover:bg-brand-greenHover text-white px-7 py-3.5 rounded-2xl font-bold text-sm sm:text-base shadow-glow-green transition-all transform hover:-translate-y-0.5 active:scale-95">
+              <svg class="w-5 h-5 text-brand-yellow" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Traçar Rota no GPS</span>
+            </a>
+
+            <!-- Botão Secundário: Como Funciona -->
+            <a href="#como-funciona" 
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3.5 rounded-2xl font-semibold text-sm sm:text-base transition-all transform hover:-translate-y-0.5">
+              <span>Como Funciona</span>
+              <svg class="w-4 h-4 text-brand-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Badges de Confiança -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 text-xs text-blue-100 font-medium pt-4 border-t border-white/10">
+            <div class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-white/15">
+              <svg class="w-3.5 h-3.5 text-brand-yellow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>Sabão Omo & Comfort inclusos</span>
+            </div>
+            <div class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-white/15">
+              <svg class="w-3.5 h-3.5 text-brand-yellow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>Cartão e PIX no totem</span>
+            </div>
+            <div class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-white/15">
+              <svg class="w-3.5 h-3.5 text-brand-yellow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>Secagem rápida</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- COLUNA DA DIREITA: O MAPA INTERATIVO DENTRO DA BOLHA DE SABÃO (5 Colunas) -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center">
+
+          <!-- A BOLHA DE MAPA ESFÉRICA -->
+          <div class="relative flex items-center justify-center my-2">
+            <!-- Aura luminosa da bolha -->
+            <div class="absolute -inset-3 rounded-full bg-gradient-to-tr from-brand-sky/35 via-brand-yellow/20 to-brand-royal/40 filter blur-xl opacity-80 animate-pulse pointer-events-none"></div>
+
+            <!-- Moldura da Bolha de Sabão com o Mapa Interativo Dentro -->
+            <div class="soap-bubble-map-wrapper w-[290px] h-[290px] sm:w-[350px] sm:h-[350px] lg:w-[390px] lg:h-[390px] relative z-10 cursor-grab active:cursor-grabbing">
+              <!-- Mapa Interativo Leaflet -->
+              <div id="hero-interactive-map" class="w-full h-full"></div>
+            </div>
+          </div>
+
+          <!-- Mini Rodapé da Bolha com Status e Waze -->
+          <div class="mt-3 flex flex-wrap items-center justify-center gap-3">
+            <span class="text-blue-200 text-xs flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-full border border-white/15">
+              <span class="w-2 h-2 rounded-full bg-brand-green animate-ping"></span>
+              <span>Localização em tempo real</span>
+            </span>
+            <a href="https://waze.com/ul?ll=-27.35914,-53.39438&navigate=yes" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1 bg-white/10 hover:bg-white/20 text-white text-xs px-3 py-1 rounded-full border border-white/20 transition-colors">
+              <span>Abrir no Waze</span>
+              <svg class="w-3 h-3 text-brand-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Divisória suave inferior com transição orgânica -->
+    <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent"></div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. SEÇÃO DORES DO CLIENTE ("PARE DE SOFRER EM CASA!") -->
+  <!-- ========================================================================= -->
+  <section class="py-14 sm:py-20 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <!-- Cabeçalho da Seção -->
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-brand-royal font-bold text-sm uppercase tracking-widest bg-brand-skyLight px-3.5 py-1.5 rounded-full inline-block mb-3">
+          Identificou alguma dessas situações?
+        </span>
+        <h2 class="font-title text-3xl sm:text-5xl text-brand-royal font-bold uppercase leading-none">
+          PARE DE SOFRER LAVANDO ROUPA EM CASA!
+        </h2>
+        <p class="text-slate-600 mt-3 text-base sm:text-lg">
+          Lavanderia em casa rouba seu tempo e ocupa espaço. Olha só se isso não acontece com você:
+        </p>
+      </div>
+
+      <!-- 3 Cards de Dores com Design Moderno 2026 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
+        
+        <!-- Dor 1: Chuva e Frio -->
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-8 text-center shadow-[0_4px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_35px_rgba(11,77,184,0.12)] hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-blue-100 to-sky-50 text-brand-royal shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h11a3 3 0 00.8-5.9 5 5 0 00-9.8-1.8A4 4 0 003 15z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 19v2m4-2v2m4-2v2" />
+            </svg>
+          </div>
+          <h3 class="font-title text-2xl text-slate-900 tracking-wide uppercase mb-3">
+            Roupa que não seca em dias de chuva ou frio
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Aquele cheiro desagradável de umidade e dias inteiros perdidos esperando a roupa secar no varal.
+          </p>
+        </div>
+
+        <!-- Dor 2: Falta de Espaço -->
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-8 text-center shadow-[0_4px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_35px_rgba(255,210,31,0.25)] hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-amber-100 to-yellow-50 text-amber-700 shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4a3 3 0 00-2.83 2H4l8 6 8-6h-5.17A3 3 0 0012 4z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 10l8 6 8-6v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6z" />
+            </svg>
+          </div>
+          <h3 class="font-title text-2xl text-slate-900 tracking-wide uppercase mb-3">
+            Apartamento sem espaço para varal
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Varal ocupando a sala, sacada entulhada de roupas e o seu descanso de fim de semana arruinado.
+          </p>
+        </div>
+
+        <!-- Dor 3: Cobertor Grande -->
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-8 text-center shadow-[0_4px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_35px_rgba(239,68,68,0.15)] hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-rose-100 to-red-50 text-rose-600 shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+            </svg>
+          </div>
+          <h3 class="font-title text-2xl text-slate-900 tracking-wide uppercase mb-3">
+            Cobertor grande que não cabe na máquina
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Forçar a máquina de casa até quase quebrar ou gastar uma fortuna em lavanderia tradicional.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Fechamento de Alívio em Amarelo -->
+      <div class="bg-brand-yellow rounded-3xl p-6 sm:p-8 text-center max-w-3xl mx-auto shadow-bubble transform hover:scale-[1.01] transition-transform">
+        <span class="block text-slate-800 font-bold text-sm sm:text-base uppercase tracking-wider mb-1">
+          Cansado de perder o fim de semana lavando roupa?
+        </span>
+        <h3 class="font-title text-3xl sm:text-5xl font-black text-brand-royal uppercase tracking-wide">
+          SEUS PROBLEMAS ACABARAM!
+        </h3>
+        <p class="text-slate-900 font-medium text-base sm:text-lg mt-2 max-w-xl mx-auto">
+          Na Divina Bolha você lava e seca tudo rapidinho, com produtos profissionais de primeira linha já inclusos.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 3. SEÇÃO COMO FUNCIONA (4 PASSOS NUMERADOS) -->
+  <!-- ========================================================================= -->
+  <section id="como-funciona" class="py-16 sm:py-24 bg-brand-skyLight relative">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <!-- Cabeçalho -->
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-brand-royal font-bold text-xs uppercase tracking-widest bg-white px-3.5 py-1.5 rounded-full inline-block mb-3 shadow-sm">
+          Simples, Prático e 100% Autônomo
+        </span>
+        <h2 class="font-title text-3xl sm:text-5xl text-brand-royal font-bold uppercase leading-none">
+          COMO FUNCIONA? É SÓ CHEGAR!
+        </h2>
+        <p class="text-slate-600 mt-3 text-base sm:text-lg">
+          Em apenas 4 passos simples você resolve toda a sua roupa da semana sem complicação:
+        </p>
+      </div>
+
+      <!-- 4 Passos Numerados -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        
+        <!-- Passo 1 -->
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-brand-sky/20 flex flex-col justify-between hover:shadow-md transition-shadow relative">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-title text-4xl sm:text-5xl text-brand-yellow font-black">01</span>
+            <div class="w-12 h-12 rounded-2xl bg-brand-skyLight text-brand-royal flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M6 8v10a2 2 0 002 2h8a2 2 0 002-2V8M9 4h6a1 1 0 011 1v3H8V5a1 1 0 011-1z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-5 4h4" />
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-title text-2xl text-brand-royal uppercase mb-2">Separe as roupas</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Separe suas peças por categorias: roupas brancas, coloridas e roupas íntimas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-brand-sky/20 flex flex-col justify-between hover:shadow-md transition-shadow relative">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-title text-4xl sm:text-5xl text-brand-yellow font-black">02</span>
+            <div class="w-12 h-12 rounded-2xl bg-brand-skyLight text-brand-royal flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect x="4" y="3" width="16" height="18" rx="3" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="12" cy="13" r="4.5" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="8" cy="6.5" r="0.75" fill="currentColor" />
+                <circle cx="11" cy="6.5" r="0.75" fill="currentColor" />
+                <circle cx="16" cy="6.5" r="1.25" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-title text-2xl text-brand-royal uppercase mb-2">Escolha a máquina</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Escolha a máquina e o programa ideal para cada tipo de tecido. Tem instruções fáceis no local para peças delicadas ou mais sujas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-brand-sky/20 flex flex-col justify-between hover:shadow-md transition-shadow relative">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-title text-4xl sm:text-5xl text-brand-yellow font-black">03</span>
+            <div class="w-12 h-12 rounded-2xl bg-brand-skyLight text-brand-royal flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect x="2" y="5" width="20" height="14" rx="2" stroke-linecap="round" stroke-linejoin="round" />
+                <line x1="2" y1="10" x2="22" y2="10" stroke-linecap="round" stroke-linejoin="round" />
+                <rect x="6" y="14" width="4" height="2" rx="0.5" fill="currentColor" />
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-title text-2xl text-brand-royal uppercase mb-2">Pague no cartão ou PIX</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Pagamento rápido direto no totem: aceitamos cartão de crédito, débito e PIX instantâneo.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 4 -->
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-brand-sky/20 flex flex-col justify-between hover:shadow-md transition-shadow relative">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-title text-4xl sm:text-5xl text-brand-yellow font-black">04</span>
+            <div class="w-12 h-12 rounded-2xl bg-brand-skyLight text-brand-royal flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.1 4.5 4.9.7-3.5 3.4.8 4.9-4.3-2.3-4.3 2.3.8-4.9-3.5-3.4 4.9-.7L15 3z" />
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-title text-2xl text-brand-royal uppercase mb-2">Retire e pronto!</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Lave e seque tudo no mesmo local. Suas roupas saem sequinhas, desamassadas e super cheirosas.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Caixa de Informação Importante sobre Tempo e Produtos -->
+      <div class="bg-white border-2 border-brand-green/30 rounded-3xl p-6 sm:p-8 max-w-3xl mx-auto shadow-sm text-center">
+        <div class="inline-flex items-center gap-2 bg-brand-green/10 text-brand-green px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider mb-3">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="13" r="8" stroke-linecap="round" stroke-linejoin="round" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4l2.5 2.5M10 2h4m-2 0v3" />
+          </svg>
+          <span>Agilidade Imbatível & Economia</span>
+        </div>
+        <p class="text-slate-800 text-base sm:text-lg font-medium leading-relaxed">
+          Cada ciclo leva apenas de <strong class="text-brand-royal font-bold">35 a 45 minutos</strong>. 
+          O sabão <strong class="text-brand-royal font-bold">Omo</strong> e o amaciante <strong class="text-brand-royal font-bold">Comfort</strong> 
+          já estão <span class="text-brand-green font-bold">inclusos</span> na dosagem perfeita — você não precisa levar absolutamente nada de casa!
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 4. SEÇÃO DIFERENCIAIS (5 CARDS MODERNOS COM ÍCONES) -->
+  <!-- ========================================================================= -->
+  <section id="diferenciais" class="py-16 sm:py-24 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <!-- Cabeçalho -->
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-brand-royal font-bold text-xs uppercase tracking-widest bg-brand-skyLight px-3.5 py-1.5 rounded-full inline-block mb-3">
+          Por que escolher a Divina Bolha?
+        </span>
+        <h2 class="font-title text-3xl sm:text-5xl text-brand-royal font-bold uppercase leading-none">
+          DIFERENCIAIS PENSADOS NO SEU CONFORTO
+        </h2>
+        <p class="text-slate-600 mt-3 text-base sm:text-lg">
+          Mais tecnologia, praticidade e o melhor custo-benefício de Frederico Westphalen:
+        </p>
+      </div>
+
+      <!-- Grid com os 5 Diferenciais -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Diferencial 1: Máquina Grande Capacidade -->
+        <div class="p-7 rounded-3xl bg-brand-skySoft border border-brand-sky/20 hover:border-brand-royal/40 transition-all hover:-translate-y-1 shadow-sm">
+          <div class="w-14 h-14 rounded-2xl bg-brand-royal text-white flex items-center justify-center mb-5 shadow-bubble">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="3" y="2" width="18" height="20" rx="3" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="12" cy="13" r="5" stroke-linecap="round" stroke-linejoin="round" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m-3-3h6" />
+            </svg>
+          </div>
+          <h3 class="font-title text-2xl text-brand-royal uppercase mb-2">Máquina de Grande Capacidade</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Ideal para lavar cobertores pesados, edredons de casal/queen ou até <strong>2 cestos de roupa inteiros</strong> de uma única vez.
+          </p>
+        </div>
+
+        <!-- Diferencial 2: Produtos Omo e Comfort Inclusos -->
+        <div class="p-7 rounded-3xl bg-brand-skySoft border border-brand-sky/20 hover:border-brand-royal/40 transition-all hover:-translate-y-1 shadow-sm">
+          <div class="w-14 h-14 rounded-2xl bg-brand-royal text-white flex items-center justify-center mb-5 shadow-bubble">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 3h6m-3 0v4m-5 4h10l1 9a2 2 0 01-2 2H8a2 2 0 01-2-2l1-9z" />
+              <circle cx="12" cy="14" r="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="font-title text-2xl text-brand-royal uppercase mb-2">Omo & Comfort Inclusos</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Produtos originais de alta qualidade injetados automaticamente, com finalizador especial que <strong>evita roupa amassada</strong> e deixa cheirinho de limpeza prolongado.
+          </p>
+        </div>
+
+        <!-- Diferencial 3: Ambiente Confortável -->
+        <div class="p-7 rounded-3xl bg-brand-skySoft border border-brand-sky/20 hover:border-brand-royal/40 transition-all hover:-translate-y-1 shadow-sm">
+          <div class="w-14 h-14 rounded-2xl bg-brand-royal text-white flex items-center justify-center mb-5 shadow-bubble">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 16.5v2a1.5 1.5 0 003 0v-2m4 0v2a1.5 1.5 0 003 0v-2M4 11h16a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a2 2 0 012-2zM6 11V7a3 3 0 013-3h6a3 3 0 013 3v4" />
+            </svg>
+          </div>
+          <h3 class="font-title text-2xl text-brand-royal uppercase mb-2">Espaço Confortável para Esperar</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Ambiente climatizado, agradável e seguro com <strong>Wi-Fi gratuito de alta velocidade</strong>, cadeiras confortáveis e água fresquinha enquanto suas roupas lavam.
+          </p>
+        </div>
+
+        <!-- Diferencial 4: Horário Amplo -->
+        <div class="p-7 rounded-3xl bg-brand-skySoft border border-brand-sky/20 hover:border-brand-royal/40 transition-all hover:-translate-y-1 shadow-sm">
+          <div class="w-14 h-14 rounded-2xl bg-brand-royal text-white flex items-center justify-center mb-5 shadow-bubble">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 3" />
+            </svg>
+          </div>
+          <h3 class="font-title text-2xl text-brand-royal uppercase mb-2">Aberta Todos os Dias: 7h às 23h</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Segunda a domingo, inclusive feriados. Horário estendido perfeito para quem tem rotina corrida ou estuda e trabalha.
+          </p>
+        </div>
+
+        <!-- Diferencial 5: 100% Autônomo -->
+        <div class="p-7 rounded-3xl bg-brand-skySoft border border-brand-sky/20 hover:border-brand-royal/40 transition-all hover:-translate-y-1 md:col-span-2 lg:col-span-1 shadow-sm">
+          <div class="w-14 h-14 rounded-2xl bg-brand-royal text-white flex items-center justify-center mb-5 shadow-bubble">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="7" y="2" width="10" height="20" rx="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 18h2m-2-13h2" />
+            </svg>
+          </div>
+          <h3 class="font-title text-2xl text-brand-royal uppercase mb-2">Sistema 100% Autônomo</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Sem filas ou burocracia. O sistema é intuitivo, com instruções detalhadas em cada tela para você fazer tudo sozinho em segundos.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 5. SEÇÃO PREÇOS TRANSPARENTES (FÁCEIS DE EDITAR NO CÓDIGO) -->
+  <!-- ========================================================================= -->
+  <!-- PREÇOS EDITÁVEIS AQUI / EDITABLE PRICES HERE -->
+  <section id="precos" class="py-16 sm:py-24 bg-gradient-to-b from-brand-skyLight to-white relative">
+    <div class="max-w-5xl mx-auto px-4">
+      
+      <!-- Cabeçalho -->
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-brand-royal font-bold text-xs uppercase tracking-widest bg-white px-3.5 py-1.5 rounded-full inline-block mb-3 shadow-sm">
+          Sem Surpresas ou Taxas Escondidas
+        </span>
+        <h2 class="font-title text-3xl sm:text-5xl text-brand-royal font-bold uppercase leading-none">
+          PREÇOS JUSTOS E ECONÔMICOS
+        </h2>
+        <p class="text-slate-600 mt-3 text-base sm:text-lg">
+          Muito mais barato do que gastar água, luz e produtos caros na máquina de casa:
+        </p>
+      </div>
+
+      <!-- Cards de Preços -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10">
+        
+        <!-- CARD PREÇO: Máquinas Menores -->
+        <div class="bg-white rounded-3xl p-8 border-2 border-brand-sky/30 shadow-bubble flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-brand-sky text-white font-bold text-xs px-4 py-1.5 rounded-bl-2xl uppercase tracking-wider">
+            Mais Popular
+          </div>
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-brand-skyLight text-brand-royal flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <rect x="4" y="3" width="16" height="18" rx="3" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="12" cy="13" r="4.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="8" cy="6.5" r="0.75" fill="currentColor" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-title text-3xl text-brand-royal uppercase leading-tight">Máquinas Menores</h3>
+                <span class="text-xs text-slate-500 font-medium">Ideal para roupas do dia a dia</span>
+              </div>
+            </div>
+            
+            <div class="my-6 p-4 rounded-2xl bg-brand-skyLight/60 border border-brand-sky/20">
+              <div class="flex items-baseline justify-between py-2 border-b border-brand-sky/20">
+                <span class="font-semibold text-slate-700">Ciclo de Lavagem:</span>
+                <span class="font-title text-3xl text-brand-royal">R$ 15,90</span>
+              </div>
+              <div class="flex items-baseline justify-between py-2">
+                <span class="font-semibold text-slate-700">Ciclo de Secagem:</span>
+                <span class="font-title text-3xl text-brand-royal">R$ 15,90</span>
+              </div>
+            </div>
+
+            <ul class="space-y-2.5 text-sm text-slate-600 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="text-brand-green font-bold">✓</span> Sabão Omo e Comfort inclusos
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-brand-green font-bold">✓</span> Ciclo rápido de 35 a 45 minutos
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-brand-green font-bold">✓</span> Roupa limpa, cheirosa e quase passada
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://wa.me/5555981301400?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20as%20m%C3%A1quinas%20da%20Divina%20Bolha" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="w-full text-center bg-brand-royal hover:bg-brand-royalDark text-white py-3.5 rounded-2xl font-bold transition-all shadow-md">
+            Tirar Dúvidas no WhatsApp
+          </a>
+        </div>
+
+        <!-- CARD PREÇO: Máquina Grande -->
+        <div class="bg-white rounded-3xl p-8 border-2 border-brand-yellow shadow-bubble-lg flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-brand-yellow text-slate-900 font-extrabold text-xs px-4 py-1.5 rounded-bl-2xl uppercase tracking-wider">
+            Super Capacidade
+          </div>
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <rect x="3" y="2" width="18" height="20" rx="3" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="12" cy="13" r="5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m-3-3h6" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-title text-3xl text-brand-royal uppercase leading-tight">Máquina Grande</h3>
+                <span class="text-xs text-slate-500 font-medium">Cobertores, edredons ou 2 cestos</span>
+              </div>
+            </div>
+
+            <div class="my-6 p-4 rounded-2xl bg-amber-50 border border-brand-yellow/40">
+              <div class="flex items-baseline justify-between py-2">
+                <span class="font-semibold text-slate-700">Ciclo Completo:</span>
+                <span class="font-title text-4xl text-brand-royal font-black">R$ 29,90</span>
+              </div>
+            </div>
+
+            <ul class="space-y-2.5 text-sm text-slate-600 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="text-brand-green font-bold">✓</span> Lava cobertores pesados de casal e queen
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-brand-green font-bold">✓</span> Suporta até 2 cestos de roupa cheios
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-brand-green font-bold">✓</span> Produtos Omo e Comfort inclusos
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://wa.me/5555981301400?text=Ol%C3%A1!%20Quero%20lavar%20cobertores%20na%20m%C3%A1quina%20grande%20da%20Divina%20Bolha" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="w-full text-center bg-brand-green hover:bg-brand-greenHover text-white py-3.5 rounded-2xl font-bold transition-all shadow-md">
+            Quero Lavar Meu Cobertor
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Formas de Pagamento Organizadas -->
+      <div class="bg-white rounded-3xl p-6 max-w-2xl mx-auto border border-brand-sky/20 shadow-sm text-center">
+        <div class="flex items-center justify-center gap-2 mb-4 text-brand-royal font-bold text-sm sm:text-base">
+          <svg class="w-5 h-5 text-brand-royal flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="2" y="5" width="20" height="14" rx="2" />
+            <line x1="2" y1="10" x2="22" y2="10" />
+          </svg>
+          <span>Pagamento Rápido no Totem</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="flex items-center justify-center gap-2 bg-slate-50 border border-slate-200/80 rounded-2xl py-2.5 px-3 text-xs sm:text-sm font-semibold text-slate-700">
+            <svg class="w-4 h-4 text-brand-royal flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span>Cartão de Crédito</span>
+          </div>
+          <div class="flex items-center justify-center gap-2 bg-slate-50 border border-slate-200/80 rounded-2xl py-2.5 px-3 text-xs sm:text-sm font-semibold text-slate-700">
+            <svg class="w-4 h-4 text-brand-royal flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>Cartão de Débito</span>
+          </div>
+          <div class="flex items-center justify-center gap-2 bg-emerald-50 border border-emerald-300 rounded-2xl py-2.5 px-3 text-xs sm:text-sm font-bold text-emerald-700 shadow-sm">
+            <svg class="w-4 h-4 text-emerald-600 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9.5L4.5 7.75 12 4l7.5 3.75L12 11.5zm0 2.5L2 9v6l10 5 10-5V9l-10 5z"/></svg>
+            <span>PIX Instantâneo</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 6. SEÇÃO FOTOS DO ESPAÇO (GALERIA MODERNA COM 6 FOTOS) -->
+  <!-- ========================================================================= -->
+  <section id="fotos" class="py-16 sm:py-24 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <!-- Cabeçalho -->
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-brand-royal font-bold text-xs uppercase tracking-widest bg-brand-skyLight px-3.5 py-1.5 rounded-full inline-block mb-3">
+          Conheça Nossa Estrutura
+        </span>
+        <h2 class="font-title text-3xl sm:text-5xl text-brand-royal font-bold uppercase leading-none">
+          CONHEÇA O ESPAÇO DIVINA BOLHA
+        </h2>
+        <p class="text-slate-600 mt-3 text-base sm:text-lg">
+          Ambiente limpo, seguro, moderno e projetado para seu conforto enquanto suas roupas lavam:
+        </p>
+      </div>
+
+      <!-- Galeria com 6 Fotos com Overlay Moderno -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-12">
+        
+        <!-- Foto 1 -->
+        <div class="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=700&q=80" 
+               alt="Máquinas modernas de lavanderia self-service" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+               loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] sm:text-xs font-bold text-brand-yellow uppercase tracking-wider block">Equipamentos</span>
+            <p class="text-xs sm:text-sm font-semibold line-clamp-1">Máquinas Industriais de Alta Performance</p>
+          </div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=700&q=80" 
+               alt="Secadoras rápidas profissionais" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+               loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] sm:text-xs font-bold text-brand-yellow uppercase tracking-wider block">Secagem Rápida</span>
+            <p class="text-xs sm:text-sm font-semibold line-clamp-1">Roupas secas em minutos</p>
+          </div>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=700&q=80" 
+               alt="Roupas limpas, dobradas e cheirosas" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+               loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] sm:text-xs font-bold text-brand-yellow uppercase tracking-wider block">Qualidade</span>
+            <p class="text-xs sm:text-sm font-semibold line-clamp-1">Omo & Comfort originais inclusos</p>
+          </div>
+        </div>
+
+        <!-- Foto 4 -->
+        <div class="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?auto=format&fit=crop&w=700&q=80" 
+               alt="Espaço interno aconchegante com Wi-Fi" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+               loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] sm:text-xs font-bold text-brand-yellow uppercase tracking-wider block">Conforto</span>
+            <p class="text-xs sm:text-sm font-semibold line-clamp-1">Wi-Fi livre, água e assentos</p>
+          </div>
+        </div>
+
+        <!-- Foto 5 -->
+        <div class="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1521656693074-0ef32e80a5d5?auto=format&fit=crop&w=700&q=80" 
+               alt="Lavagem de cobertores e edredons" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+               loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] sm:text-xs font-bold text-brand-yellow uppercase tracking-wider block">Super Máquina</span>
+            <p class="text-xs sm:text-sm font-semibold line-clamp-1">Cobertores e peças volumosas</p>
+          </div>
+        </div>
+
+        <!-- Foto 6 -->
+        <div class="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=700&q=80" 
+               alt="Praticidade e rapidez no autoatendimento" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+               loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] sm:text-xs font-bold text-brand-yellow uppercase tracking-wider block">Autonomia</span>
+            <p class="text-xs sm:text-sm font-semibold line-clamp-1">Prático, rápido e sem atendente</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botão para o Instagram -->
+      <div class="text-center">
+        <a href="https://instagram.com/divinabolha" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:opacity-95 text-white px-8 py-4 rounded-2xl font-bold text-base shadow-md transition-all transform hover:-translate-y-0.5">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span>Ver mais fotos e vídeos no Instagram @divinabolha</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 8. PERGUNTAS FREQUENTES (ACORDEÃO INTERATIVO) -->
+  <!-- ========================================================================= -->
+  <section id="duvidas" class="py-16 sm:py-24 bg-brand-skyLight relative">
+    <div class="max-w-4xl mx-auto px-4">
+      
+      <!-- Cabeçalho -->
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-brand-royal font-bold text-xs uppercase tracking-widest bg-white px-3.5 py-1.5 rounded-full inline-block mb-3 shadow-sm">
+          Tire Suas Dúvidas
+        </span>
+        <h2 class="font-title text-3xl sm:text-5xl text-brand-royal font-bold uppercase leading-none">
+          PERGUNTAS FREQUENTES
+        </h2>
+        <p class="text-slate-600 mt-3 text-base sm:text-lg">
+          Tudo o que você precisa saber antes de lavar suas roupas na Divina Bolha:
+        </p>
+      </div>
+
+      <!-- Acordeão FAQ com 8 perguntas -->
+      <div class="space-y-4" id="faq-container">
+        
+        <!-- Pergunta 1 -->
+        <div class="faq-item bg-white rounded-2xl border border-brand-sky/20 overflow-hidden shadow-sm transition-colors">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="false">
+            <span class="font-semibold text-slate-800 text-base sm:text-lg">Preciso levar sabão e amaciante?</span>
+            <svg class="faq-icon w-5 h-5 text-brand-royal transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-5 text-slate-600 text-sm sm:text-base leading-relaxed">
+            Não precisa levar nada! O sabão profissional <strong>Omo</strong> e o amaciante <strong>Comfort</strong> já estão inclusos e são dosados automaticamente em todas as lavagens, garantindo limpeza profunda e perfume incrível.
+          </div>
+        </div>
+
+        <!-- Pergunta 2 -->
+        <div class="faq-item bg-white rounded-2xl border border-brand-sky/20 overflow-hidden shadow-sm transition-colors">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="false">
+            <span class="font-semibold text-slate-800 text-base sm:text-lg">Quanto tempo demora?</span>
+            <svg class="faq-icon w-5 h-5 text-brand-royal transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-5 text-slate-600 text-sm sm:text-base leading-relaxed">
+            Cada ciclo (lavar ou secar) leva apenas de <strong>35 a 45 minutos</strong>. Em cerca de 1h15 a 1h30 você lava, seca e já sai com todas as roupas prontas para guardar!
+          </div>
+        </div>
+
+        <!-- Pergunta 3 -->
+        <div class="faq-item bg-white rounded-2xl border border-brand-sky/20 overflow-hidden shadow-sm transition-colors">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="false">
+            <span class="font-semibold text-slate-800 text-base sm:text-lg">Quanto custa?</span>
+            <svg class="faq-icon w-5 h-5 text-brand-royal transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-5 text-slate-600 text-sm sm:text-base leading-relaxed">
+            Nas máquinas menores: <strong>R$ 15,90</strong> para lavar ou <strong>R$ 15,90</strong> para secar. Na máquina de grande capacidade (para cobertores ou até 2 cestos): <strong>R$ 29,90</strong>.
+          </div>
+        </div>
+
+        <!-- Pergunta 4 -->
+        <div class="faq-item bg-white rounded-2xl border border-brand-sky/20 overflow-hidden shadow-sm transition-colors">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="false">
+            <span class="font-semibold text-slate-800 text-base sm:text-lg">Quais as formas de pagamento aceitas?</span>
+            <svg class="faq-icon w-5 h-5 text-brand-royal transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-5 text-slate-600 text-sm sm:text-base leading-relaxed">
+            Você pode pagar diretamente no totem eletrônico com <strong>Cartão de Débito, Cartão de Crédito e PIX instantâneo</strong>. Tudo de forma rápida e segura.
+          </div>
+        </div>
+
+        <!-- Pergunta 5 -->
+        <div class="faq-item bg-white rounded-2xl border border-brand-sky/20 overflow-hidden shadow-sm transition-colors">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="false">
+            <span class="font-semibold text-slate-800 text-base sm:text-lg">Posso lavar cobertor e edredom?</span>
+            <svg class="faq-icon w-5 h-5 text-brand-royal transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-5 text-slate-600 text-sm sm:text-base leading-relaxed">
+            <strong>Sim!</strong> Dispomos de máquina específica de grande capacidade, ideal para lavar e secar cobertores pesados, edredons de casal e queen size sem esforço.
+          </div>
+        </div>
+
+        <!-- Pergunta 6 -->
+        <div class="faq-item bg-white rounded-2xl border border-brand-sky/20 overflow-hidden shadow-sm transition-colors">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="false">
+            <span class="font-semibold text-slate-800 text-base sm:text-lg">Nunca usei lavanderia self-service, é difícil?</span>
+            <svg class="faq-icon w-5 h-5 text-brand-royal transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-5 text-slate-600 text-sm sm:text-base leading-relaxed">
+            <strong>É super fácil!</strong> O espaço foi planejado para qualquer pessoa usar: basta colocar a roupa na máquina, selecionar o programa indicado nos cartazes visuais no local e realizar o pagamento no totem. É só chegar!
+          </div>
+        </div>
+
+        <!-- Pergunta 7 -->
+        <div class="faq-item bg-white rounded-2xl border border-brand-sky/20 overflow-hidden shadow-sm transition-colors">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="false">
+            <span class="font-semibold text-slate-800 text-base sm:text-lg">Qual o horário de funcionamento?</span>
+            <svg class="faq-icon w-5 h-5 text-brand-royal transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-5 text-slate-600 text-sm sm:text-base leading-relaxed">
+            Estamos abertos <strong>todos os dias, de domingo a domingo (inclusive feriados), das 7h às 23h</strong> sem fechar ao meio-dia.
+          </div>
+        </div>
+
+        <!-- Pergunta 8 -->
+        <div class="faq-item bg-white rounded-2xl border border-brand-sky/20 overflow-hidden shadow-sm transition-colors">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="false">
+            <span class="font-semibold text-slate-800 text-base sm:text-lg">Onde fica localizada a Divina Bolha?</span>
+            <svg class="faq-icon w-5 h-5 text-brand-royal transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content px-6 pb-5 text-slate-600 text-sm sm:text-base leading-relaxed">
+            Ficamos no coração de Frederico Westphalen: na <strong>Rua Coronel Aparício Borges, 487, sala 02, Centro</strong>, bem ao lado da Prefeitura Municipal.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Chamada de Suporte WhatsApp caso ainda haja dúvidas -->
+      <div class="mt-8 text-center">
+        <p class="text-sm text-slate-600 mb-3">Ficou com alguma dúvida que não está aqui?</p>
+        <a href="https://wa.me/5555981301400?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20Divina%20Bolha" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 text-brand-royal hover:text-brand-royalDark font-bold text-sm underline decoration-2">
+          <span>Fale agora com a gente pelo WhatsApp</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 9. LOCALIZAÇÃO E HORÁRIO (COM GOOGLE MAPS EMBEDDED) -->
+  <!-- ========================================================================= -->
+  <section id="localizacao" class="py-16 sm:py-24 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Informações de Endereço e Horário -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-brand-royal font-bold text-xs uppercase tracking-widest bg-brand-skyLight px-3.5 py-1.5 rounded-full inline-block">
+            Localização Central & Fácil Acesso
+          </span>
+
+          <h2 class="font-title text-3xl sm:text-5xl text-brand-royal font-bold uppercase leading-tight">
+            ONDE ESTAMOS E HORÁRIOS
+          </h2>
+
+          <p class="text-slate-600 text-base leading-relaxed">
+            Localização privilegiada no Centro de Frederico Westphalen, com fácil estacionamento e acesso rápido para o seu dia a dia.
+          </p>
+
+          <!-- Card Endereço -->
+          <div class="p-5 rounded-2xl bg-brand-skySoft border border-brand-sky/30 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-brand-royal text-white flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-base">Endereço</h3>
+              <p class="text-slate-700 text-sm mt-1">
+                Rua Coronel Aparício Borges, 487, sala 02<br>
+                Centro, Frederico Westphalen - RS
+              </p>
+              <span class="inline-flex items-center gap-1.5 mt-2 text-xs font-bold text-brand-royal bg-white px-2.5 py-1 rounded-md border border-brand-royal/20">
+                <svg class="w-3.5 h-3.5 text-brand-yellow fill-brand-yellow" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                <span>Ao lado da Prefeitura Municipal</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Horário -->
+          <div class="p-5 rounded-2xl bg-brand-skySoft border border-brand-sky/30 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-brand-green text-white flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 3" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-base">Horário de Funcionamento</h3>
+              <p class="text-slate-700 text-sm mt-1 font-semibold">
+                Todos os dias: das 7h às 23h
+              </p>
+              <p class="text-slate-500 text-xs mt-1">
+                Aberto inclusive aos sábados, domingos e feriados, sem fechar ao meio-dia.
+              </p>
+            </div>
+          </div>
+
+          <!-- Botão Traçar Rota no Maps -->
+          <a href="https://maps.google.com/?q=Rua+Coronel+Aparicio+Borges+487+Frederico+Westphalen+RS" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="inline-flex items-center justify-center gap-2 w-full bg-brand-royal hover:bg-brand-royalDark text-white py-3.5 px-6 rounded-2xl font-bold transition-all shadow-md">
+            <svg class="w-5 h-5 text-brand-yellow" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+            <span>Abrir no Aplicativo do Google Maps</span>
+          </a>
+
+        </div>
+
+        <!-- Google Maps Iframe Incorporado -->
+        <div class="lg:col-span-7">
+          <div class="rounded-3xl overflow-hidden shadow-bubble border-4 border-white aspect-video sm:aspect-[4/3] w-full relative">
+            <iframe 
+              title="Mapa de Localização da Divina Bolha Lavanderia Self-Service" 
+              src="https://maps.google.com/maps?q=Rua+Coronel+Aparicio+Borges+487+Frederico+Westphalen+RS&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              class="w-full h-full border-0" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 10. CHAMADA FINAL (FUNDO AZUL ROYAL COM BOLHAS E CTA WHATSAPP) -->
+  <!-- ========================================================================= -->
+  <section class="relative bg-gradient-to-r from-brand-royalDark via-brand-royal to-brand-royal text-white py-16 sm:py-24 overflow-hidden">
+    
+    <!-- Bolhas animadas de fundo -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="soap-bubble" style="width: 90px; height: 90px; left: 15%; animation-duration: 10s;"></div>
+      <div class="soap-bubble" style="width: 40px; height: 40px; left: 45%; animation-duration: 7s; animation-delay: 2s;"></div>
+      <div class="soap-bubble" style="width: 110px; height: 110px; left: 80%; animation-duration: 14s; animation-delay: 1s;"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+      <div class="inline-block bg-brand-yellow text-slate-900 font-extrabold text-xs sm:text-sm px-4 py-1 rounded-full uppercase tracking-wider mb-4 shadow-sm">
+        Chega de roupa acumulada
+      </div>
+
+      <h2 class="font-title text-4xl sm:text-6xl md:text-7xl font-bold uppercase leading-none tracking-tight mb-6">
+        SEU FIM DE SEMANA SEM ROUPA SUJA <br class="hidden sm:inline">
+        <span class="text-brand-yellow">COMEÇA AQUI</span>
+      </h2>
+
+      <p class="text-lg sm:text-2xl text-blue-100 max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+        Venha para a Divina Bolha hoje mesmo. Traga suas roupas, aproveite nosso ambiente e resolva tudo em menos de uma hora!
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+        <a href="https://wa.me/5555981301400?text=Ol%C3%A1!%20Quero%20visitar%20a%20Divina%20Bolha%20hoje!" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="pulse-btn w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-brand-green hover:bg-brand-greenHover text-white px-8 py-5 rounded-2xl font-bold text-lg sm:text-xl shadow-glow-green transition-transform transform active:scale-95">
+          <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span>Falar no WhatsApp Agora</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 11. RODAPÉ COMPLETO -->
+  <!-- ========================================================================= -->
+  <footer class="bg-slate-900 text-slate-300 pt-14 pb-24 sm:pb-14 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        
+        <!-- Coluna 1: Logo e Descrição -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-white/10 p-1 flex items-center justify-center border border-brand-sky">
+              <img src="logo.png" 
+                   alt="Divina Bolha" 
+                   class="w-full h-full object-contain"
+                   onerror="this.onerror=null; this.parentElement.innerHTML='<svg class=\'w-6 h-6 text-brand-sky\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\'><circle cx=\'12\' cy=\'12\' r=\'8\'/><circle cx=\'9\' cy=\'9\' r=\'2\' fill=\'white\'/><path d=\'M17 7a2 2 0 100-4 2 2 0 000 4z\'/></svg>';">
+            </div>
+            <span class="font-title text-2xl tracking-wider text-white">DIVINA BOLHA</span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Sua lavanderia self-service no coração de Frederico Westphalen. Lave e seque suas roupas com agilidade, economia e tecnologia.
+          </p>
+        </div>
+
+        <!-- Coluna 2: Endereço -->
+        <div>
+          <h3 class="font-bold text-white text-base mb-3 uppercase tracking-wider">Endereço</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Rua Coronel Aparício Borges, 487, sala 02<br>
+            Centro - Frederico Westphalen - RS<br>
+            <span class="text-brand-yellow font-medium mt-1 inline-block">Ao lado da Prefeitura</span>
+          </p>
+        </div>
+
+        <!-- Coluna 3: Horário -->
+        <div>
+          <h3 class="font-bold text-white text-base mb-3 uppercase tracking-wider">Horário</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            <strong class="text-white">Aberto todos os dias:</strong><br>
+            Das 7h às 23h<br>
+            <span class="text-xs text-slate-500">Inclusive sábados, domingos e feriados.</span>
+          </p>
+        </div>
+
+        <!-- Coluna 4: Contato & Instagram -->
+        <div>
+          <h3 class="font-bold text-white text-base mb-3 uppercase tracking-wider">Contato & Redes</h3>
+          <ul class="space-y-3 text-sm">
+            <li>
+              <a href="https://wa.me/5555981301400?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="flex items-center gap-2 hover:text-brand-green transition-colors text-white font-medium">
+                <svg class="w-4 h-4 text-brand-green" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                <span>(55) 98130-1400</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/divinabolha" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="flex items-center gap-2 hover:text-pink-400 transition-colors text-white font-medium">
+                <svg class="w-4 h-4 text-pink-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>Instagram @divinabolha</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Direitos Autorais -->
+      <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p>&copy; <span id="current-year">2026</span> Divina Bolha Lavanderia Self-Service. Todos os direitos reservados.</p>
+        <p>Frederico Westphalen - RS | Desenvolvido com carinho para seus clientes.</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ========================================================================= -->
+  <!-- BOTÃO FLUTUANTE DE WHATSAPP FIXO (CANTO INFERIOR DIREITO) -->
+  <!-- ========================================================================= -->
+  <a href="https://wa.me/5555981301400?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais" 
+     target="_blank" 
+     rel="noopener noreferrer"
+     id="floating-whatsapp-btn"
+     aria-label="Falar conosco no WhatsApp"
+     class="pulse-btn fixed bottom-5 right-5 z-50 flex items-center gap-2.5 bg-brand-green hover:bg-brand-greenHover text-white px-4 py-3 sm:px-5 sm:py-3.5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 group">
+    <svg class="w-7 h-7 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+    <span class="font-bold text-sm tracking-wide hidden sm:inline">WhatsApp</span>
+  </a>
+
+
+  <!-- Leaflet JS para Mapa Interativo Leve e Moderno -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT VANILLA INTERATIVO (Código em inglês, comentários em PT-BR) -->
+  <!-- ========================================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initBusinessStatus();
+      initMobileMenu();
+      initFaqAccordion();
+      initSmoothScroll();
+      initCurrentYear();
+      initInteractiveMap();
+    });
+
+    /**
+     * Inicializa o mapa interativo Leaflet (Opção 2 - Faixa Integrada com CartoDB Voyager).
+     * Apresenta o Centro de Frederico Westphalen com pino personalizado com efeito radar.
+     */
+    function initInteractiveMap() {
+      const mapContainer = document.getElementById('hero-interactive-map');
+      if (!mapContainer || typeof L === 'undefined') return;
+
+      // Coordenadas exatas da Divina Bolha (Rua Cel. Aparício Borges, 487 - Centro, FW)
+      const fwCoordinates = [-27.35914, -53.39438];
+
+      const map = L.map('hero-interactive-map', {
+        center: fwCoordinates,
+        zoom: 16.5,
+        zoomControl: false, // Mantém a bolha circular limpa e orgânica sem caixas quadradas
+        attributionControl: false,
+        scrollWheelZoom: false // Evita prender a rolagem do usuário ao navegar pela página
+      });
+
+      // Camada de mapa limpa e moderna (CartoDB Voyager)
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19,
+        subdomains: 'abcd'
+      }).addTo(map);
+
+      // Marcador animado exclusivo da Divina Bolha com efeito de pulso/radar
+      const bubblePinHtml = `
+        <div style="position:relative; width:48px; height:48px; display:flex; align-items:center; justify-content:center; transform:translate(-50%, -50%); cursor:pointer;">
+          <div style="position:absolute; width:48px; height:48px; border-radius:50%; background:rgba(79,179,246,0.4); animation:ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+          <div style="position:absolute; width:30px; height:30px; border-radius:50%; background:rgba(255,210,31,0.5); animation:pulse 2s infinite;"></div>
+          <div style="position:relative; z-index:10; width:38px; height:38px; border-radius:12px; background:#0B4DB8; border:2.5px solid #FFFFFF; box-shadow:0 8px 25px rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center;">
+            <svg style="width:20px; height:20px; color:#FFD21F; fill:currentColor;" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+        </div>
+      `;
+
+      const customPin = L.divIcon({
+        className: 'divina-map-pin',
+        html: bubblePinHtml,
+        iconSize: [0, 0]
+      });
+
+      const marker = L.marker(fwCoordinates, { icon: customPin }).addTo(map);
+
+      // Conteúdo informativo interativo ao clicar no pino
+      marker.bindPopup(`
+        <div style="text-align:center; padding:4px; font-family:'Poppins', sans-serif;">
+          <div style="font-weight:700; color:#0B4DB8; font-size:14px; margin-bottom:2px;">DIVINA BOLHA</div>
+          <div style="font-size:11px; color:#334155; line-height:1.3;">Rua Cel. Aparício Borges, 487 (sala 02)</div>
+          <div style="font-size:10px; color:#64748B; margin-top:2px;">Ao lado da Prefeitura • Centro de FW</div>
+          <div style="margin-top:6px; display:inline-block; font-size:10px; font-weight:700; color:#15803d; background:#dcfce7; padding:2px 8px; border-radius:9999px;">
+            Aberta até 23h • É só chegar!
+          </div>
+        </div>
+      `);
+
+      // Invalidação de layout para garantir renderização perfeita na bolha circular
+      setTimeout(() => { map.invalidateSize(); }, 150);
+      setTimeout(() => { map.invalidateSize(); }, 500);
+
+      // Reajusta o tamanho caso a janela seja redimensionada
+      window.addEventListener('resize', () => {
+        map.invalidateSize();
+      });
+    }
+
+    /**
+     * Calcula se a lavanderia está aberta ou fechada no momento atual.
+     * Horário: todos os dias, das 7h às 23h.
+     */
+    function initBusinessStatus() {
+      const statusBadge = document.getElementById('business-status-badge');
+      const statusDot = document.getElementById('status-indicator-dot');
+      if (!statusBadge || !statusDot) return;
+
+      const now = new Date();
+      const currentHour = now.getHours();
+
+      // Aberto das 7:00 até 22:59:59 (das 7h às 23h)
+      const isOpen = currentHour >= 7 && currentHour < 23;
+
+      if (isOpen) {
+        statusBadge.textContent = 'Aberto agora (fecha às 23h)';
+        statusBadge.className = 'font-semibold text-brand-green tracking-wide';
+        statusDot.className = 'inline-block w-2.5 h-2.5 rounded-full bg-brand-green animate-ping';
+      } else {
+        statusBadge.textContent = 'Fechado agora (abre às 7h)';
+        statusBadge.className = 'font-semibold text-brand-yellow tracking-wide';
+        statusDot.className = 'inline-block w-2.5 h-2.5 rounded-full bg-brand-yellow';
+      }
+    }
+
+    /**
+     * Gerencia a abertura e fechamento do menu responsivo mobile.
+     */
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+      if (!menuBtn || !mobileMenu) return;
+
+      menuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+
+      // Fecha o menu mobile automaticamente ao clicar em um link
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    /**
+     * Inicializa os itens acordeão de FAQ (Perguntas Frequentes).
+     */
+    function initFaqAccordion() {
+      const toggles = document.querySelectorAll('.faq-toggle');
+
+      toggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const item = toggle.closest('.faq-item');
+          if (!item) return;
+
+          const isActive = item.classList.contains('active');
+
+          // Fecha todos os outros itens para manter limpo
+          document.querySelectorAll('.faq-item').forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+              const otherBtn = otherItem.querySelector('.faq-toggle');
+              if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          // Alterna o estado do item atual
+          if (isActive) {
+            item.classList.remove('active');
+            toggle.setAttribute('aria-expanded', 'false');
+          } else {
+            item.classList.add('active');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    }
+
+    /**
+     * Suporte a rolagem suave para âncoras internas.
+     */
+    function initSmoothScroll() {
+      const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+      anchorLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+          const targetId = link.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            event.preventDefault();
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    }
+
+    /**
+     * Define dinamicamente o ano atual no rodapé.
+     */
+    function initCurrentYear() {
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    }
+  </script>
+
+</body>
+</html>
